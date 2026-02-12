@@ -1,0 +1,633 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Scholarships | Gwinnett County Resource Hub</title>
+
+    <!-- Your site theme -->
+    <link rel="stylesheet" href="../styles.css" />
+
+    <style>
+        .sch-wrap {
+            max-width: 1150px;
+            margin: 0 auto;
+            padding: 18px 14px 44px;
+        }
+        
+        .sch-head {
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: flex-end;
+            justify-content: space-between;
+        }
+        
+        .sch-title {
+            margin: 0;
+            font-size: 1.55rem;
+            font-weight: 800;
+            color: var(--sandText);
+        }
+        
+        .sch-sub {
+            margin: 6px 0 0;
+            color: var(--mutedText);
+            max-width: 80ch;
+            line-height: 1.4;
+        }
+        
+        .filters {
+            margin-top: 14px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: flex-end;
+            padding: 12px;
+            border-radius: 16px;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, .04);
+        }
+        
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            min-width: 220px;
+        }
+        
+        .field label {
+            font-size: .85rem;
+            font-weight: 700;
+            color: rgba(233, 225, 214, .78);
+        }
+        
+        .input,
+        .select {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid var(--border);
+            color: var(--sandText);
+            border-radius: 14px;
+            padding: 10px 12px;
+            outline: none;
+            font-size: .98rem;
+        }
+        
+        .input::placeholder {
+            color: rgba(233, 225, 214, .55);
+        }
+        
+        .meta-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+            margin-top: 14px;
+            margin-bottom: 10px;
+            color: var(--mutedText);
+            font-size: .95rem;
+        }
+        
+        .btn {
+            appearance: none;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, .06);
+            color: var(--sandText);
+            padding: 10px 12px;
+            border-radius: 14px;
+            cursor: pointer;
+            font-weight: 750;
+        }
+        
+        .btn:hover {
+            border-color: rgba(176, 109, 76, .6);
+            background: rgba(255, 255, 255, .10);
+        }
+        
+        .list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 10px;
+        }
+        
+        .card {
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, .04);
+            border-radius: 18px;
+            overflow: hidden;
+        }
+        
+        .card-top {
+            padding: 14px 14px 10px;
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(36, 64, 46, .45);
+            border: 1px solid rgba(233, 225, 214, .14);
+            font-weight: 800;
+            font-size: .82rem;
+            width: fit-content;
+        }
+        
+        .card-title {
+            margin: 8px 0 0;
+            font-size: 1.08rem;
+            font-weight: 850;
+            color: var(--sandText);
+        }
+        
+        .card-desc {
+            margin: 8px 0 0;
+            color: rgba(255, 255, 255, .86);
+            line-height: 1.45;
+            max-width: 95ch;
+            white-space: pre-wrap;
+        }
+        
+        .facts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 10px;
+            color: rgba(233, 225, 214, .82);
+            font-size: .92rem;
+        }
+        
+        .fact {
+            padding: 7px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(233, 225, 214, .12);
+            background: rgba(0, 0, 0, .12);
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+        }
+        
+        .fact b {
+            color: var(--sandText);
+        }
+        
+        .card-actions {
+            padding: 12px 14px 14px;
+            border-top: 1px solid rgba(233, 225, 214, .10);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, .08);
+        }
+        
+        .link {
+            text-decoration: none;
+            font-weight: 850;
+            color: white;
+            background: rgba(176, 109, 76, .92);
+            padding: 10px 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(255, 255, 255, .18);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .link:hover {
+            background: rgba(47, 91, 59, .92);
+        }
+        
+        .tags {
+            color: rgba(233, 225, 214, .75);
+            font-size: .9rem;
+        }
+        /* Tooltip */
+        
+        .tip {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 18px;
+            height: 18px;
+            border-radius: 999px;
+            border: 1px solid rgba(233, 225, 214, .22);
+            background: rgba(255, 255, 255, .05);
+            font-size: 12px;
+            font-weight: 900;
+            cursor: help;
+            user-select: none;
+            margin-left: 6px;
+            vertical-align: middle;
+        }
+        
+        .tip:hover::after {
+            content: attr(data-tip);
+            position: absolute;
+            bottom: 130%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: min(320px, 70vw);
+            background: rgba(15, 12, 10, .98);
+            color: rgba(255, 255, 255, .92);
+            border: 1px solid rgba(233, 225, 214, .18);
+            padding: 10px 10px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+            z-index: 5;
+            font-size: 12.5px;
+            line-height: 1.35;
+            white-space: normal;
+        }
+        
+        .tip:hover::before {
+            content: "";
+            position: absolute;
+            bottom: 120%;
+            left: 50%;
+            transform: translateX(-50%);
+            border: 8px solid transparent;
+            border-top-color: rgba(233, 225, 214, .18);
+        }
+        
+        .empty {
+            margin-top: 12px;
+            padding: 18px;
+            border-radius: 18px;
+            border: 1px dashed rgba(233, 225, 214, .22);
+            background: rgba(255, 255, 255, .03);
+            text-align: center;
+            color: var(--mutedText);
+        }
+        
+        @media (max-width: 740px) {
+            .field {
+                min-width: unset;
+                width: 100%;
+            }
+            .filters {
+                align-items: stretch;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <div></div>
+        <h1 class="site-title">Gwinnett County Resource Hub</h1>
+        <a class="menu-btn" href="../index.html" aria-label="Back to home" style="text-decoration:none;">
+            <span style="font-weight:900;color:var(--sandText);">⌂</span>
+        </a>
+    </header>
+
+    <main class="sch-wrap">
+        <div class="sch-head">
+            <div>
+                <h2 class="sch-title">Scholarships</h2>
+                <p class="sch-sub">
+                    These are real scholarship/program links relevant to Gwinnett County and Georgia students. Use filters to match your major/interest area, and use search to find keywords like “nursing”, “agriculture”, “education”, etc.
+                </p>
+            </div>
+        </div>
+
+        <section class="filters" aria-label="Scholarship filters">
+            <div class="field" style="flex:1; min-width: 260px;">
+                <label for="search">Search</label>
+                <input class="input" id="search" placeholder="Search scholarships, keywords, majors..." />
+            </div>
+
+            <div class="field">
+                <label for="category">Major category</label>
+                <select class="select" id="category">
+          <option value="All">All</option>
+          <option value="Local Gwinnett">Local Gwinnett</option>
+          <option value="STEM">STEM</option>
+          <option value="Business">Business</option>
+          <option value="Language & Arts">Language & Arts</option>
+          <option value="Education">Education</option>
+          <option value="Health">Health</option>
+          <option value="Trades/Technical">Trades/Technical</option>
+          <option value="Agriculture/Environment">Agriculture/Environment</option>
+          <option value="General">General</option>
+        </select>
+            </div>
+
+            <div class="field">
+                <label for="sort">Sort</label>
+                <select class="select" id="sort">
+          <option value="soon">Due date (soonest)</option>
+          <option value="new">Newest listed</option>
+          <option value="high">$ amount (highest)</option>
+          <option value="az">Title (A–Z)</option>
+        </select>
+            </div>
+
+            <button class="btn" id="reset" type="button">Reset</button>
+        </section>
+
+        <div class="meta-row">
+            <div id="countText">Showing 0 scholarships</div>
+            <div style="opacity:.85;">Tip: hover the <span class="tip" data-tip="Tooltips explain who it’s for, how the amount works, and what to watch for.">i</span> icons.</div>
+        </div>
+
+        <section id="list" class="list"></section>
+        <div id="empty" class="empty" hidden>No scholarships match your filter/search.</div>
+    </main>
+
+    <script>
+        // Dates are ISO strings so sorting works. Use "9999-12-31" for rolling/term-based deadlines.
+        const scholarships = [{
+                title: "Gwinnett County Fair Scholarship (Agriculture)",
+                category: "Agriculture/Environment",
+                local: true,
+                amount: 5000,
+                amountText: "$5,000",
+                due: "9999-12-31",
+                dueText: "Annual (see site for current cycle)",
+                link: "https://www.gwinnettcountyfair.com/p/getconnected/scholarships",
+                desc: "Annual scholarship supporting students pursuing agriculture-related undergraduate study.",
+                tooltip: "Award is paid directly to an accredited institution. Check the fair site for the current application window and exact deadline.",
+                tags: ["agriculture", "environment", "local", "gwinnett", "undergraduate"]
+            }, {
+                title: "Peach State FCU Scholarship Program (Students + Career Advancement)",
+                category: "General",
+                local: true,
+                amount: 267500,
+                amountText: "$267,500 total awarded (program total)",
+                due: "2026-02-27",
+                dueText: "Feb 27, 2026",
+                link: "https://www.peachstatefcu.org/scholarships",
+                desc: "Scholarship program for eligible seniors and adults seeking career advancement (membership/eligibility rules apply).",
+                tooltip: "This is the total scholarship pool for the program (not a single award amount). Use the application portal to see individual scholarship amounts and eligibility details.",
+                tags: ["gwinnett", "lawrenceville", "credit union", "general", "education", "career"]
+            }, {
+                title: "Fortitude Foundation (Gwinnett) Scholarship",
+                category: "Local Gwinnett",
+                local: true,
+                amount: 500,
+                amountText: "$500",
+                due: "9999-12-31",
+                dueText: "Varies (see application link)",
+                link: "https://fortitudegwinnett.org/scholarships/",
+                desc: "Local scholarship for graduating seniors in the Gwinnett County area (community-focused).",
+                tooltip: "The page links out to the application/details. Use that form for the current year’s deadline and requirements.",
+                tags: ["gwinnett", "local", "community", "general"]
+            }, {
+                title: "GCPS Foundation Scholarship Catalog (Many scholarships)",
+                category: "Local Gwinnett",
+                local: true,
+                amount: 0,
+                amountText: "Varies (many awards)",
+                due: "9999-12-31",
+                dueText: "Catalog-based (varies by scholarship)",
+                link: "https://gcps-foundation.org/scholarships-2/",
+                desc: "A catalog of multiple scholarships for GCPS-related students (requirements and amounts differ per scholarship).",
+                tooltip: "Amounts and deadlines depend on each scholarship inside the catalog. Open the catalog and use the scholarship-specific directions.",
+                tags: ["gcps", "foundation", "many scholarships", "local", "gwinnett"]
+            }, {
+                title: "Gwinnett Tech Foundation Scholarships (Technical/College programs)",
+                category: "Trades/Technical",
+                local: true,
+                amount: 0,
+                amountText: "Varies",
+                due: "9999-12-31",
+                dueText: "Fall: Mar 1–Mar 31 • Spring: Sep 1–Sep 30",
+                link: "https://gwinnetttech.edu/about-us/gwinnett-tech-foundation/scholarships/",
+                desc: "Scholarships for Gwinnett Tech students across many programs (welding, nursing, HVAC, early childhood, etc.).",
+                tooltip: "Gwinnett Tech scholarships are matched through their application system. Deadlines are semester windows.",
+                tags: ["gwinnett tech", "technical", "trade", "career", "nursing", "welding", "hvac", "early childhood"]
+            }, {
+                title: "HOPE Scholarship (Georgia - Tuition Assistance)",
+                category: "General",
+                local: false,
+                amount: 10258,
+                amountText: "Up to $10,258 max annual (example cap)",
+                due: "9999-12-31",
+                dueText: "By last day of the school term (per term rules)",
+                link: "https://www.gafutures.org/hope-state-aid-programs/hope-zell-miller-scholarships/hope-scholarship/",
+                desc: "Georgia state scholarship that helps cover eligible tuition at HOPE-eligible colleges/universities for qualifying Georgia residents.",
+                tooltip: "Award depends on school type and enrolled hours. Apply via FAFSA or GSFAPP. Deadlines are tied to the school term.",
+                tags: ["georgia", "hope", "tuition", "state aid", "general"]
+            }, {
+                title: "Zell Miller Scholarship (Georgia - Higher Merit Tier)",
+                category: "General",
+                local: false,
+                amount: 0,
+                amountText: "Varies (school + hours)",
+                due: "9999-12-31",
+                dueText: "By last day of the school term (per term rules)",
+                link: "https://www.gafutures.org/hope-state-aid-programs/hope-zell-miller-scholarships/zell-miller-scholarship/",
+                desc: "Merit-based Georgia scholarship (stricter requirements than HOPE). Award varies by institution and credit hours.",
+                tooltip: "Award varies by school/hours. Apply via FAFSA or GSFAPP. Check your school’s financial aid deadlines too.",
+                tags: ["georgia", "zell miller", "tuition", "state aid", "general"]
+            },
+
+            // Major-category helpers (not Gwinnett-only but useful for major-based browsing)
+            {
+                title: "STEM Scholarship Searches (Georgia/Local Databases)",
+                category: "STEM",
+                local: false,
+                amount: 0,
+                amountText: "Varies",
+                due: "9999-12-31",
+                dueText: "Varies",
+                link: "https://www.gafutures.org/scholarships/",
+                desc: "Use GAfutures scholarship search tools to find STEM-targeted opportunities by keyword and eligibility.",
+                tooltip: "This is a search hub. Use keywords like 'engineering', 'computer science', 'biology', and filter by your grade/college level.",
+                tags: ["stem", "engineering", "computer science", "science", "math", "scholarship search"]
+            }, {
+                title: "Business Scholarship Searches (Georgia/Local Databases)",
+                category: "Business",
+                local: false,
+                amount: 0,
+                amountText: "Varies",
+                due: "9999-12-31",
+                dueText: "Varies",
+                link: "https://www.gafutures.org/scholarships/",
+                desc: "Search for business-related scholarships by keyword (accounting, marketing, entrepreneurship).",
+                tooltip: "This is a search hub. Use keywords and confirm deadlines/amounts inside each listing.",
+                tags: ["business", "finance", "accounting", "marketing", "entrepreneurship"]
+            }, {
+                title: "Language & Arts Scholarship Searches (Georgia/Local Databases)",
+                category: "Language & Arts",
+                local: false,
+                amount: 0,
+                amountText: "Varies",
+                due: "9999-12-31",
+                dueText: "Varies",
+                link: "https://www.gafutures.org/scholarships/",
+                desc: "Search for scholarships related to languages, writing, history, music, and arts.",
+                tooltip: "This is a search hub. Use keywords like 'Spanish', 'English', 'music', 'art', 'theater'.",
+                tags: ["language", "arts", "music", "writing", "history"]
+            }, {
+                title: "Education Scholarship Searches (Georgia/Local Databases)",
+                category: "Education",
+                local: false,
+                amount: 0,
+                amountText: "Varies",
+                due: "9999-12-31",
+                dueText: "Varies",
+                link: "https://www.peachstatefcu.org/scholarships",
+                desc: "Peach State notes some scholarships for students pursuing education degrees (see program listings).",
+                tooltip: "Use the Peach State portal to find any education-specific scholarships in the current year’s list.",
+                tags: ["education", "teaching", "school", "teacher"]
+            }, {
+                title: "Health Scholarships (Program Lists via Gwinnett Tech)",
+                category: "Health",
+                local: true,
+                amount: 0,
+                amountText: "Varies",
+                due: "9999-12-31",
+                dueText: "Fall: Mar 1–Mar 31 • Spring: Sep 1–Sep 30",
+                link: "https://gwinnetttech.edu/about-us/gwinnett-tech-foundation/scholarships/",
+                desc: "Gwinnett Tech’s scholarship list includes program areas like nursing (amounts vary per award).",
+                tooltip: "Open the list and look for Nursing/Health scholarships. Amounts and requirements depend on the specific award.",
+                tags: ["health", "nursing", "medical", "allied health"]
+            }
+        ];
+
+        const listEl = document.getElementById("list");
+        const emptyEl = document.getElementById("empty");
+        const countText = document.getElementById("countText");
+
+        const searchEl = document.getElementById("search");
+        const catEl = document.getElementById("category");
+        const sortEl = document.getElementById("sort");
+        const resetBtn = document.getElementById("reset");
+
+        function parseDueISO(s) {
+            // rolling/unknown uses far-future date so it sorts to bottom
+            if (!s) return new Date("9999-12-31T00:00:00Z").getTime();
+            return new Date(s + "T00:00:00Z").getTime();
+        }
+
+        function moneyVal(s) {
+            // amount is numeric where possible; 0/unknown should be lowest
+            return typeof s.amount === "number" ? s.amount : 0;
+        }
+
+        function matchesQuery(item, q) {
+            if (!q) return true;
+            const hay = [
+                item.title, item.desc, item.category,
+                item.amountText, item.dueText,
+                ...(item.tags || [])
+            ].join(" ").toLowerCase();
+            return hay.includes(q);
+        }
+
+        function render() {
+            const q = (searchEl.value || "").trim().toLowerCase();
+            const cat = catEl.value;
+            const sort = sortEl.value;
+
+            let items = scholarships.filter(s =>
+                (cat === "All" || s.category === cat || (cat === "Local Gwinnett" && s.local)) &&
+                matchesQuery(s, q)
+            );
+
+            // Sorting
+            if (sort === "soon") {
+                items.sort((a, b) => parseDueISO(a.due) - parseDueISO(b.due));
+            } else if (sort === "new") {
+                // "new" isn't real data, so we approximate by local first then title
+                items.sort((a, b) => Number(b.local) - Number(a.local) || a.title.localeCompare(b.title));
+            } else if (sort === "high") {
+                items.sort((a, b) => moneyVal(b) - moneyVal(a));
+            } else if (sort === "az") {
+                items.sort((a, b) => a.title.localeCompare(b.title));
+            }
+
+            listEl.innerHTML = "";
+
+            countText.textContent = `Showing ${items.length} scholarship${items.length === 1 ? "" : "s"}`;
+            emptyEl.hidden = items.length !== 0;
+
+            items.forEach(s => {
+                        const card = document.createElement("article");
+                        card.className = "card";
+
+                        const localText = s.local ? "Local / Gwinnett" : "Georgia / General";
+
+                        card.innerHTML = `
+          <div class="card-top">
+            <div>
+              <div class="badge">
+                ${escapeHtml(s.category)} · ${escapeHtml(localText)}
+              </div>
+
+              <h3 class="card-title">
+                ${escapeHtml(s.title)}
+                ${s.tooltip ? `<span class="tip" data-tip="${escapeAttr(s.tooltip)}">i</span>` : ""}
+              </h3>
+
+              <p class="card-desc">${escapeHtml(s.desc)}</p>
+
+              <div class="facts">
+                <span class="fact"><b>Award:</b> ${escapeHtml(s.amountText)}</span>
+                <span class="fact"><b>Due:</b> ${escapeHtml(s.dueText)}</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="card-actions">
+            <a class="link" href="${escapeAttr(s.link)}" target="_blank" rel="noopener">
+              Open Scholarship Link ↗
+            </a>
+
+            <div class="tags">
+              ${s.tags && s.tags.length ? `Keywords: ${escapeHtml(s.tags.slice(0,6).join(", "))}` : ""}
+            </div>
+          </div>
+        `;
+
+        listEl.appendChild(card);
+      });
+    }
+
+    function escapeHtml(str){
+      return String(str || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function escapeAttr(str){
+      return String(str || "")
+        .replaceAll("&", "&amp;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;");
+    }
+
+    resetBtn.addEventListener("click", () => {
+      searchEl.value = "";
+      catEl.value = "All";
+      sortEl.value = "soon";
+      render();
+    });
+
+    searchEl.addEventListener("input", render);
+    catEl.addEventListener("change", render);
+    sortEl.addEventListener("change", render);
+
+    render();
+    </script>
+</body>
+
+</html>
