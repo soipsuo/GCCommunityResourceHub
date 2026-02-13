@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Activities | Gwinnett County Resource Hub</title>
+
+    <link rel="stylesheet" href="../styles.css" />
+
+    <style>
+        .wrap {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 18px 14px 44px;
+        }
+        
+        .page-title {
+            margin: 10px 0 6px;
+            font-size: 1.55rem;
+            font-weight: 900;
+            color: var(--sandText);
+        }
+        
+        .sub {
+            margin: 0 0 14px;
+            color: var(--mutedText);
+            line-height: 1.45;
+            max-width: 95ch;
+        }
+        
+        .panel {
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, .04);
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+        
+        .panel-top {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px 14px;
+            border-bottom: 1px solid rgba(233, 225, 214, .10);
+            background: rgba(0, 0, 0, .10);
+            flex-wrap: wrap;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        .label {
+            font-weight: 850;
+            color: rgba(233, 225, 214, .9);
+            font-size: .95rem;
+        }
+        
+        .select {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid var(--border);
+            color: var(--sandText);
+            border-radius: 14px;
+            padding: 10px 12px;
+            outline: none;
+            font-size: .98rem;
+            min-width: 260px;
+        }
+        
+        .pill {
+            display: inline-flex;
+            gap: 8px;
+            align-items: center;
+            padding: 10px 12px;
+            border-radius: 14px;
+            border: 1px solid rgba(233, 225, 214, .14);
+            background: rgba(255, 255, 255, .04);
+            color: rgba(233, 225, 214, .9);
+            font-weight: 850;
+            font-size: .92rem;
+            text-decoration: none;
+            cursor: pointer;
+            user-select: none;
+        }
+        
+        .pill:hover {
+            border-color: rgba(176, 109, 76, .6);
+            background: rgba(255, 255, 255, .08);
+        }
+        
+        .iframe {
+            width: 100%;
+            height: calc(100vh - 64px - 170px);
+            min-height: 650px;
+            border: 0;
+            background: #111;
+        }
+        
+        .note {
+            padding: 10px 14px;
+            color: rgba(233, 225, 214, .70);
+            font-size: .92rem;
+            border-top: 1px solid rgba(233, 225, 214, .10);
+            background: rgba(0, 0, 0, .06);
+        }
+        
+        @media (max-width: 720px) {
+            .select {
+                min-width: unset;
+                width: 100%;
+            }
+            .iframe {
+                height: 75vh;
+                min-height: 600px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <div></div>
+        <h1 class="site-title">Gwinnett County Resource Hub</h1>
+        <a class="menu-btn" href="../index.html" aria-label="Back to home" style="text-decoration:none;">
+            <span style="font-weight:900;color:var(--sandText);">⌂</span>
+        </a>
+    </header>
+
+    <main class="wrap">
+        <h2 class="page-title">Activities Calendar</h2>
+        <p class="sub">
+            This page embeds the official Gwinnett County calendar, but only for community-focused calendars. Use the dropdown to switch views.
+        </p>
+
+        <section class="panel">
+            <div class="panel-top">
+                <div class="controls">
+                    <span class="label">Calendar view:</span>
+                    <select class="select" id="calendarSelect" aria-label="Choose a calendar">
+            <option value="https://gwinnettcounty.mhsoftware.com/View.html?calendar_id=24">
+                Community Outreach
+            </option>
+            <option value="https://gwinnettcounty.mhsoftware.com/View.html?calendar_id=16" selected>
+                Community Services (Default)
+            </option>
+            <!-- Optional extras (resource calendars). If any ever stop working, remove them. -->
+            <option value="https://gwinnettcounty.mhsoftware.com/ViewMonth.html?dropdown=1&integral=0&resource_id=20&show_resources=1&show_stop=0">
+              Community Resource Center (Sawnee Ave)
+            </option>
+            <option value="https://gwinnettcounty.mhsoftware.com/View.html?item_type_id=0">
+              All Events (not recommended)
+            </option>
+          </select>
+                </div>
+
+                <div class="controls">
+                    <a class="pill" id="openOfficial" href="https://gwinnettcounty.mhsoftware.com/View.html?calendar_id=16" target="_blank" rel="noopener">
+            Open official ↗
+          </a>
+                    <button class="pill" id="reloadBtn" type="button">Reload</button>
+                </div>
+            </div>
+
+            <iframe id="calendarFrame" class="iframe" src="https://gwinnettcounty.mhsoftware.com/View.html?calendar_id=16" title="Gwinnett County Community Calendar" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+            <div class="note">
+                If the calendar looks “zoomed” inside the iframe, try using the “Open official” link for the best experience. Some county sites also change embed permissions over time.
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const select = document.getElementById("calendarSelect");
+        const frame = document.getElementById("calendarFrame");
+        const openOfficial = document.getElementById("openOfficial");
+        const reloadBtn = document.getElementById("reloadBtn");
+
+        function setCalendar(url) {
+            frame.src = url;
+            openOfficial.href = url;
+        }
+
+        select.addEventListener("change", () => {
+            setCalendar(select.value);
+        });
+
+        reloadBtn.addEventListener("click", () => {
+            // Quick reload by resetting src
+            const current = frame.src;
+            frame.src = "about:blank";
+            setTimeout(() => frame.src = current, 60);
+        });
+    </script>
+</body>
+
+</html>
