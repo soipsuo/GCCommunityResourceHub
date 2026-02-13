@@ -1,13 +1,21 @@
 :root {
-    --dirt: #2B211A;
-    --soil: #3A2B20;
-    --leaf: #24402E;
-    --leaf2: #2F5B3B;
-    --clay: #B06D4C;
-    --sandText: #E9E1D6;
-    --mutedText: rgba(233, 225, 214, .82);
-    --border: rgba(233, 225, 214, .12);
+    /* Gwinnett green theme */
+    --dirt: #253527;
+    /* main background */
+    --soil: #24644b;
+    /* cards / header */
+    --leaf: #147C52;
+    /* hover / accents */
+    --leaf2: #16533a;
+    /* brighter accent */
+    --clay: #156644;
+    /* buttons */
+    --sandText: #E8F5EF;
+    /* light mint text */
+    --mutedText: rgba(232, 245, 239, .75);
+    --border: rgba(232, 245, 239, .15);
     --shadow: 0 14px 34px rgba(0, 0, 0, .35);
+    --radius: 18px;
 }
 
 * {
@@ -742,36 +750,29 @@ main>*:nth-child(3) {
         grid-template-columns: 126px 1fr 126px;
         padding: 0 10px;
     }
-
     .brand-pill {
         gap: 6px;
         padding: 6px 8px 6px 6px;
         font-size: .72rem;
     }
-
     .brand-dot {
         width: 24px;
         height: 24px;
         font-size: .62rem;
     }
-
     .site-title {
         font-size: .92rem;
     }
-
     .feedback-wrap {
         padding-top: 28px;
     }
-
     .feedback-card {
         padding: 18px;
         border-radius: 16px;
     }
-
     .feedback-grid {
         grid-template-columns: 1fr;
     }
-
     .feedback-actions .btn {
         width: 100%;
     }
