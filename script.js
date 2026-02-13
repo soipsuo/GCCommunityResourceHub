@@ -69,24 +69,31 @@ const slideImg = document.getElementById("slideImg");
 const slideTitle = document.getElementById("slideTitle");
 const slideDesc = document.getElementById("slideDesc");
 const slideActions = document.getElementById("slideActions");
+const slideCredit = document.getElementById("slideCredit");
 const dots = document.getElementById("dots");
 
 const slides = [{
         title: "Welcome",
         desc: "Explore Gwinnett County student resources.",
         img: "Images/your-left-photo.jpg",
+        sourceLabel: "GC Community Resource Hub Media",
+        sourceUrl: "index.html",
         buttons: []
     },
     {
         title: "Tutoring",
         desc: "Academic support resources.",
         img: "Images/slide1.jpg",
+        sourceLabel: "GC Community Resource Hub Media",
+        sourceUrl: "index.html",
         buttons: [{ label: "Tutoring", href: "Connecting/tutoring.html" }]
     },
     {
         title: "Forum / News",
         desc: "Community updates and discussions.",
         img: "Images/slide2.jpg",
+        sourceLabel: "GC Community Resource Hub Media",
+        sourceUrl: "index.html",
         buttons: [
             { label: "Forum", href: "Connecting/forum.html" },
             { label: "News", href: "County-Wide/news.html" }
@@ -96,12 +103,16 @@ const slides = [{
         title: "Mental Support",
         desc: "Emotional and mental health programs.",
         img: "Images/slide3.jpg",
+        sourceLabel: "GC Community Resource Hub Media",
+        sourceUrl: "index.html",
         buttons: [{ label: "Support", href: "mentalhealth.html" }]
     },
     {
         title: "Awards",
         desc: "County-wide awards.",
         img: "Images/slide4.jpg",
+        sourceLabel: "GC Community Resource Hub Media",
+        sourceUrl: "index.html",
         buttons: [{ label: "Awards", href: "County-Wide/awards.html" }]
     }
 ];
@@ -126,6 +137,7 @@ function render() {
     slideImg.src = s.img;
     slideTitle.textContent = s.title;
     slideDesc.textContent = s.desc;
+    slideCredit.innerHTML = `Photo: <a href="${s.sourceUrl}">${s.sourceLabel}</a>`;
     slideActions.innerHTML = "";
     s.buttons.forEach(b => {
         const a = document.createElement("a");

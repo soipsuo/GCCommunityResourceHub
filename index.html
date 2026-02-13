@@ -6,13 +6,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Gwinnett County Resource Hub</title>
     <link rel="stylesheet" href="styles.css">
+    <link rel="icon" type="image/png" href="favicon-gwinnett.png">
 </head>
 
 <body>
 
     <header class="topbar">
-
-        <div></div>
+        <a class="brand-pill" href="index.html" aria-label="Go to home">
+            <span class="brand-dot" aria-hidden="true">GC</span>
+            <span>Community Hub</span>
+        </a>
         <!-- left spacer -->
 
         <h1 class="site-title">Gwinnett County Resource Hub</h1>
@@ -76,11 +79,12 @@
                     <div class="slide-tag">Highlights</div>
                     <h2 class="slide-title" id="slideTitle"></h2>
                     <p class="slide-desc" id="slideDesc"></p>
+                    <p class="image-credit" id="slideCredit"></p>
                     <div class="slide-actions" id="slideActions"></div>
                 </div>
 
-                <button class="arrow left" id="prevBtn">‹</button>
-                <button class="arrow right" id="nextBtn">›</button>
+                <button class="arrow left" id="prevBtn" aria-label="Previous slide">&lt;</button>
+                <button class="arrow right" id="nextBtn" aria-label="Next slide">&gt;</button>
 
             </div>
 
@@ -105,3 +109,6 @@
 </body>
 
 </html>
+
+
+
