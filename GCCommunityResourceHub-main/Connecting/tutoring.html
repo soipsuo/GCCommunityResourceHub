@@ -1,0 +1,590 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tutoring | Gwinnett County Resource Hub</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .tutor-wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 18px 14px 40px;
+        }
+
+        .hero {
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            overflow: hidden;
+            background: var(--soil);
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            margin-bottom: 16px;
+        }
+
+        .hero img {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            object-fit: cover;
+        }
+
+        .hero-copy {
+            padding: 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .hero-kicker {
+            margin: 0;
+            font-size: .78rem;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            color: rgba(233, 225, 214, .72);
+        }
+
+        .hero h2 {
+            margin: 0;
+            font-size: clamp(1.35rem, 2.7vw, 2rem);
+            line-height: 1.18;
+        }
+
+        .hero p {
+            margin: 0;
+            color: var(--mutedText);
+            line-height: 1.44;
+            max-width: 60ch;
+        }
+
+        .hero-links {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 4px;
+        }
+
+        .pill-link {
+            text-decoration: none;
+            color: var(--sandText);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 8px 12px;
+            background: rgba(255, 255, 255, .04);
+            font-weight: 650;
+        }
+
+        .pill-link:hover {
+            border-color: rgba(176, 109, 76, .68);
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 16px;
+        }
+
+        .value-card {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: rgba(255, 255, 255, .04);
+            padding: 12px;
+        }
+
+        .value-card h3 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .value-card p {
+            margin: 6px 0 0;
+            color: var(--mutedText);
+            font-size: .94rem;
+            line-height: 1.4;
+        }
+
+        .forms-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+        }
+
+        .panel {
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            background: var(--soil);
+            padding: 14px;
+        }
+
+        .panel h3 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+
+        .panel-sub {
+            margin: 7px 0 0;
+            color: var(--mutedText);
+            font-size: .93rem;
+            line-height: 1.4;
+        }
+
+        .form {
+            margin-top: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 9px;
+        }
+
+        .field {
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+        }
+
+        .field span {
+            color: var(--mutedText);
+            font-size: .86rem;
+            font-weight: 600;
+        }
+
+        .field b {
+            color: #ffbba9;
+        }
+
+        .input,
+        .select,
+        .textarea {
+            background: rgba(255, 255, 255, .04);
+            border: 1px solid var(--border);
+            color: var(--sandText);
+            border-radius: 12px;
+            padding: 10px 11px;
+            font-size: .95rem;
+            outline: none;
+        }
+
+        .textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        .input:focus,
+        .select:focus,
+        .textarea:focus {
+            border-color: rgba(176, 109, 76, .75);
+            box-shadow: 0 0 0 3px rgba(176, 109, 76, .18);
+        }
+
+        .check-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 7px;
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 10px;
+            background: rgba(255, 255, 255, .02);
+        }
+
+        .check {
+            display: flex;
+            gap: 8px;
+            align-items: flex-start;
+            font-size: .9rem;
+            color: rgba(255, 255, 255, .9);
+        }
+
+        .check input {
+            margin-top: 2px;
+        }
+
+        .btn-row {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            appearance: none;
+            border: 1px solid var(--border);
+            background: rgba(255, 255, 255, .06);
+            color: var(--sandText);
+            padding: 9px 14px;
+            border-radius: 12px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, .11);
+            border-color: rgba(176, 109, 76, .58);
+        }
+
+        .btn.primary {
+            background: rgba(176, 109, 76, .94);
+            color: white;
+            border-color: rgba(255, 255, 255, .18);
+        }
+
+        .btn.primary:hover {
+            background: rgba(47, 91, 59, .95);
+        }
+
+        .status {
+            min-height: 1.2em;
+            margin: 0;
+            color: #cfeecf;
+            font-size: .9rem;
+        }
+
+        .status.error {
+            color: #ffc2b4;
+        }
+
+        .tutor-cards {
+            margin-top: 16px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+
+        .tutor-card {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+            background: var(--soil);
+        }
+
+        .tutor-card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .tutor-body {
+            padding: 11px;
+        }
+
+        .tutor-body h4 {
+            margin: 0;
+            font-size: 1rem;
+        }
+
+        .tutor-meta {
+            margin: 4px 0 0;
+            color: var(--mutedText);
+            font-size: .87rem;
+        }
+
+        .tutor-desc {
+            margin: 7px 0 0;
+            font-size: .9rem;
+            line-height: 1.38;
+            color: rgba(255, 255, 255, .88);
+        }
+
+        @media (max-width: 980px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero img {
+                min-height: 240px;
+                max-height: 320px;
+            }
+
+            .forms-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tutor-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .value-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .row {
+                grid-template-columns: 1fr;
+            }
+
+            .check-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tutor-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <div></div>
+        <h1 class="site-title">Gwinnett County Resource Hub</h1>
+        <a class="menu-btn" href="../index.html" aria-label="Back to home" style="text-decoration:none;">
+            <span style="font-weight:800;color:var(--sandText);">HOME</span>
+        </a>
+    </header>
+
+    <main class="tutor-wrap">
+        <section class="hero">
+            <img src="https://images.unsplash.com/photo-1629360057380-18b15b42e650?fm=jpg&q=60&w=2200&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZGVudHMlMjB0dXRvcmluZ3xlbnwwfHwwfHx8MA%3D%3D" alt="Tutor helping a student">
+            <div class="hero-copy">
+                <p class="hero-kicker">Tutoring Hub</p>
+                <h2>Find a tutor for any subject or apply to become one</h2>
+                <p>
+                    Built with the clean booking-style flow used on major tutoring platforms, this page helps students
+                    request support fast and lets qualified volunteers and peers sign up to tutor.
+                </p>
+                <div class="hero-links">
+                    <a class="pill-link" href="#studentForm">Request a Tutor</a>
+                    <a class="pill-link" href="#tutorForm">Become a Tutor</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="value-grid">
+            <article class="value-card">
+                <h3>Subject Coverage</h3>
+                <p>Math, science, language arts, social studies, computer science, AP classes, SAT/ACT prep, and more.</p>
+            </article>
+            <article class="value-card">
+                <h3>Class-Specific Matching</h3>
+                <p>Students can list exact classes like Algebra II, AP Biology, Chemistry, Geometry, or Spanish II.</p>
+            </article>
+            <article class="value-card">
+                <h3>Flexible Sessions</h3>
+                <p>Pick weekday, weekend, in-person, or online preferences so scheduling is easier for everyone.</p>
+            </article>
+        </section>
+
+        <section class="forms-grid">
+            <article class="panel" id="studentForm">
+                <h3>Student Tutoring Sign-Up</h3>
+                <p class="panel-sub">Request tutoring for one or multiple subjects and include your exact classes.</p>
+
+                <form class="form" id="requestForm" novalidate>
+                    <div class="row">
+                        <label class="field">
+                            <span>Student Name <b>*</b></span>
+                            <input class="input" type="text" name="name" required maxlength="60" placeholder="Your full name">
+                        </label>
+                        <label class="field">
+                            <span>Email <b>*</b></span>
+                            <input class="input" type="email" name="email" required maxlength="90" placeholder="name@email.com">
+                        </label>
+                    </div>
+
+                    <div class="row">
+                        <label class="field">
+                            <span>Grade Level <b>*</b></span>
+                            <select class="select" name="grade" required>
+                                <option value="">Select grade</option>
+                                <option>6th</option>
+                                <option>7th</option>
+                                <option>8th</option>
+                                <option>9th</option>
+                                <option>10th</option>
+                                <option>11th</option>
+                                <option>12th</option>
+                            </select>
+                        </label>
+                        <label class="field">
+                            <span>Session Type</span>
+                            <select class="select" name="mode">
+                                <option>Either In-Person or Online</option>
+                                <option>In-Person</option>
+                                <option>Online</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="field">
+                        <span>Subjects Needed <b>*</b></span>
+                        <div class="check-grid">
+                            <label class="check"><input type="checkbox" name="subject" value="Math">Math</label>
+                            <label class="check"><input type="checkbox" name="subject" value="Science">Science</label>
+                            <label class="check"><input type="checkbox" name="subject" value="English">English / Language Arts</label>
+                            <label class="check"><input type="checkbox" name="subject" value="Social Studies">Social Studies</label>
+                            <label class="check"><input type="checkbox" name="subject" value="Computer Science">Computer Science</label>
+                            <label class="check"><input type="checkbox" name="subject" value="World Language">World Language</label>
+                            <label class="check"><input type="checkbox" name="subject" value="SAT/ACT">SAT / ACT Prep</label>
+                            <label class="check"><input type="checkbox" name="subject" value="AP/IB">AP / IB Courses</label>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <span>Specific Classes <b>*</b></span>
+                        <input class="input" type="text" name="classes" required maxlength="150" placeholder="Example: Algebra II, AP Biology, Chemistry, Spanish II">
+                    </div>
+
+                    <div class="field">
+                        <span>Goals / What You Need Help With</span>
+                        <textarea class="textarea" name="goals" maxlength="600" placeholder="Share the topics you want to improve, upcoming tests, or assignments."></textarea>
+                    </div>
+
+                    <div class="btn-row">
+                        <button class="btn primary" type="submit">Submit Request</button>
+                        <button class="btn" type="reset">Reset</button>
+                    </div>
+                    <p class="status" id="requestStatus" role="status" aria-live="polite"></p>
+                </form>
+            </article>
+
+            <article class="panel" id="tutorForm">
+                <h3>Apply to Be a Tutor</h3>
+                <p class="panel-sub">Students, graduates, and volunteers can apply to support learners in specific classes.</p>
+
+                <form class="form" id="tutorApplyForm" novalidate>
+                    <div class="row">
+                        <label class="field">
+                            <span>Full Name <b>*</b></span>
+                            <input class="input" type="text" name="name" required maxlength="60" placeholder="Your full name">
+                        </label>
+                        <label class="field">
+                            <span>Email <b>*</b></span>
+                            <input class="input" type="email" name="email" required maxlength="90" placeholder="name@email.com">
+                        </label>
+                    </div>
+
+                    <div class="row">
+                        <label class="field">
+                            <span>Role <b>*</b></span>
+                            <select class="select" name="role" required>
+                                <option value="">Select role</option>
+                                <option>High School Student Tutor</option>
+                                <option>College Tutor</option>
+                                <option>Teacher / Educator</option>
+                                <option>Community Volunteer Tutor</option>
+                            </select>
+                        </label>
+                        <label class="field">
+                            <span>Preferred Mode</span>
+                            <select class="select" name="mode">
+                                <option>Either In-Person or Online</option>
+                                <option>In-Person</option>
+                                <option>Online</option>
+                            </select>
+                        </label>
+                    </div>
+
+                    <div class="field">
+                        <span>Subjects You Can Tutor <b>*</b></span>
+                        <input class="input" type="text" name="subjects" required maxlength="160" placeholder="Example: Algebra I/II, Geometry, Biology, SAT Math">
+                    </div>
+
+                    <div class="field">
+                        <span>Specific Classes You Can Support <b>*</b></span>
+                        <input class="input" type="text" name="classes" required maxlength="180" placeholder="Example: AP Calculus AB, Chemistry, US History, Spanish III">
+                    </div>
+
+                    <div class="field">
+                        <span>Availability <b>*</b></span>
+                        <input class="input" type="text" name="availability" required maxlength="100" placeholder="Example: Mon/Wed 5-8 PM, Sat 10 AM-2 PM">
+                    </div>
+
+                    <div class="field">
+                        <span>Experience / Background</span>
+                        <textarea class="textarea" name="background" maxlength="700" placeholder="Briefly describe tutoring, mentoring, or teaching experience."></textarea>
+                    </div>
+
+                    <div class="btn-row">
+                        <button class="btn primary" type="submit">Submit Tutor Application</button>
+                        <button class="btn" type="reset">Reset</button>
+                    </div>
+                    <p class="status" id="tutorStatus" role="status" aria-live="polite"></p>
+                </form>
+            </article>
+        </section>
+
+        <section class="tutor-cards">
+            <article class="tutor-card">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?fm=jpg&q=60&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Students studying together">
+                <div class="tutor-body">
+                    <h4>STEM Peer Tutors</h4>
+                    <p class="tutor-meta">Math • Physics • Chemistry</p>
+                    <p class="tutor-desc">Focused on classwork support, concept review, and test prep for middle and high school students.</p>
+                </div>
+            </article>
+            <article class="tutor-card">
+                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?fm=jpg&q=60&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Student writing in notebook during study">
+                <div class="tutor-body">
+                    <h4>Reading & Writing Coaches</h4>
+                    <p class="tutor-meta">ELA • Essays • AP Language</p>
+                    <p class="tutor-desc">Helping students with reading comprehension, writing structure, grammar, and timed responses.</p>
+                </div>
+            </article>
+            <article class="tutor-card">
+                <img src="https://images.unsplash.com/photo-1513258496099-48168024aec0?fm=jpg&q=60&w=1600&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Classroom learning session">
+                <div class="tutor-body">
+                    <h4>Test Prep Support</h4>
+                    <p class="tutor-meta">SAT • ACT • Study Plans</p>
+                    <p class="tutor-desc">Structured prep plans with practice questions, pacing tips, and weekly progress tracking.</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script>
+        const requestForm = document.getElementById("requestForm");
+        const requestStatus = document.getElementById("requestStatus");
+
+        requestForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            const selectedSubjects = requestForm.querySelectorAll("input[name='subject']:checked").length;
+
+            if (!requestForm.checkValidity() || selectedSubjects === 0) {
+                requestStatus.textContent = "Please complete required fields and choose at least one subject.";
+                requestStatus.classList.add("error");
+                return;
+            }
+
+            requestStatus.textContent = "Your tutoring request was submitted successfully.";
+            requestStatus.classList.remove("error");
+            requestForm.reset();
+        });
+
+        requestForm.addEventListener("reset", () => {
+            requestStatus.textContent = "";
+            requestStatus.classList.remove("error");
+        });
+
+        const tutorApplyForm = document.getElementById("tutorApplyForm");
+        const tutorStatus = document.getElementById("tutorStatus");
+
+        tutorApplyForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            if (!tutorApplyForm.checkValidity()) {
+                tutorStatus.textContent = "Please complete all required tutor application fields.";
+                tutorStatus.classList.add("error");
+                return;
+            }
+
+            tutorStatus.textContent = "Your tutor application was submitted successfully.";
+            tutorStatus.classList.remove("error");
+            tutorApplyForm.reset();
+        });
+
+        tutorApplyForm.addEventListener("reset", () => {
+            tutorStatus.textContent = "";
+            tutorStatus.classList.remove("error");
+        });
+    </script>
+</body>
+
+</html>

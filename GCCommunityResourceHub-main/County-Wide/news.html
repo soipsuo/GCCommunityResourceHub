@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Community News | Gwinnett County Resource Hub</title>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .news-wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 18px 14px 42px;
+        }
+        
+        .news-head {
+            margin-top: 8px;
+            margin-bottom: 14px;
+        }
+        
+        .news-kicker {
+            margin: 0;
+            text-transform: uppercase;
+            letter-spacing: .14em;
+            font-size: .76rem;
+            color: rgba(233, 225, 214, .72);
+        }
+        
+        .news-title {
+            margin: 8px 0 0;
+            font-size: clamp(1.4rem, 3vw, 2.1rem);
+        }
+        
+        .news-sub {
+            margin: 8px 0 0;
+            color: var(--mutedText);
+            max-width: 72ch;
+            line-height: 1.45;
+        }
+        
+        .news-filters {
+            margin: 16px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .news-filter {
+            border: 1px solid var(--border);
+            background: rgba(255, 25, 255, .05);
+            color: var(--sandText);
+            border-radius: 999px;
+            padding: 8px 12px;
+            cursor: pointer;
+            font-weight: 650;
+            font-size: .9rem;
+        }
+        
+        .news-filter.active {
+            background: rgba(176, 109, 76, .9);
+            border-color: rgba(255, 255, 255, .22);
+            color: #fff;
+        }
+        
+        .news-feature {
+            display: grid;
+            grid-template-columns: 1.25fr 1fr;
+            gap: 14px;
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            overflow: hidden;
+            background: var(--soil);
+            margin-bottom: 18px;
+        }
+        
+        .news-feature img {
+            width: 100%;
+            height: 360px;
+            min-height: 0;
+            object-fit: cover;
+        }
+        
+        .news-feature-copy {
+            padding: 16px 16px 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 8px;
+        }
+        
+        .news-tag {
+            width: fit-content;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(233, 225, 214, .22);
+            background: rgba(36, 64, 46, .55);
+            font-size: .78rem;
+            font-weight: 700;
+        }
+        
+        .news-feature-copy h3 {
+            margin: 2px 0 0;
+            font-size: clamp(1.15rem, 2.2vw, 1.55rem);
+            line-height: 1.2;
+        }
+        
+        .news-meta {
+            color: rgba(233, 225, 214, .72);
+            font-size: .88rem;
+        }
+        
+        .news-feature-copy p {
+            margin: 2px 0 0;
+            color: rgba(255, 255, 255, .88);
+            line-height: 1.45;
+        }
+        
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 12px;
+        }
+        
+        .news-card {
+            background: var(--soil);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .news-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .news-card-body {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .news-card h4 {
+            margin: 0;
+            font-size: 1.02rem;
+            line-height: 1.25;
+        }
+        
+        .news-card p {
+            margin: 0;
+            color: rgba(255, 255, 255, .87);
+            line-height: 1.38;
+            font-size: .95rem;
+        }
+        
+        .news-credit {
+            margin-top: 2px;
+            font-size: .8rem;
+            color: rgba(233, 225, 214, .66);
+        }
+        
+        .news-credit a {
+            color: rgba(233, 225, 214, .86);
+            text-underline-offset: 2px;
+        }
+        
+        .news-hidden {
+            display: none;
+        }
+        
+        @media (max-width: 980px) {
+            .news-feature {
+                grid-template-columns: 1fr;
+            }
+            .news-feature img {
+                height: 240px;
+                max-height: 240px;
+            }
+            .news-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <div></div>
+        <h1 class="site-title">Gwinnett County Resource Hub</h1>
+        <a class="menu-btn" href="../index.html" aria-label="Back to home" style="text-decoration:none;">
+            <span style="font-weight:800;color:var(--sandText);">HOME</span>
+        </a>
+    </header>
+
+    <main class="news-wrap">
+        <section class="news-head">
+            <p class="news-kicker">County-Wide Good News</p>
+            <h2 class="news-title">Stories that are making Gwinnett stronger</h2>
+            <p class="news-sub">
+                This page highlights positive community wins, student achievements, and local progress across
+                Gwinnett County.
+            </p>
+        </section>
+
+        <div class="news-filters" role="tablist" aria-label="Filter news by category">
+            <button class="news-filter active" data-filter="all" type="button">All</button>
+            <button class="news-filter" data-filter="students" type="button">Students</button>
+            <button class="news-filter" data-filter="community" type="button">Community</button>
+            <button class="news-filter" data-filter="health" type="button">Health</button>
+            <button class="news-filter" data-filter="environment" type="button">Environment</button>
+        </div>
+
+        <article class="news-feature news-item" data-category="students">
+            <img src="https://images.unsplash.com/photo-1629360057380-18b15b42e650?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZGVudHMlMjB0dXRvcmluZ3xlbnwwfHwwfHx8MA%3D%3D" alt="Students working together in tutoring session">
+            <div class="news-feature-copy">
+                <span class="news-tag">Featured Story</span>
+                <h3>Gwinnett Student-Led Tutoring Nights Reach 1,000 Volunteer Hours</h3>
+                <div class="news-meta">February 10, 2026 - Students</div>
+                <p>
+                    High school mentors across the county partnered with middle schools to host weekly tutoring nights,
+                    helping over 400 students in math and reading this semester alone.
+                </p>
+                <p class="news-credit">
+                    Photo:
+                    <a href="https://unsplash.com/s/photos/students-tutoring" target="_blank" rel="noopener noreferrer">Unsplash</a>
+                </p>
+            </div>
+        </article>
+
+        <section class="news-grid">
+            <article class="news-card news-item" data-category="community">
+                <img src="https://images.unsplash.com/photo-1534483509719-3feaee7c30da?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9vZCUyMGRyaXZlJTIwdm9sdW50ZWVyc3xlbnwwfHwwfHx8MA%3D%3D" alt="Volunteers organizing food donations">
+                <div class="news-card-body">
+                    <span class="news-tag">Community</span>
+                    <h4>Weekend Food Drive Delivers 8,200 Meals to Local Families</h4>
+                    <div class="news-meta">February 8, 2026</div>
+                    <p>Neighborhood groups and student clubs teamed up to package and distribute meals across five partner sites in one weekend.</p>
+                    <p class="news-credit">Photo: <a href="https://unsplash.com/s/photos/food-drive-volunteers" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
+                </div>
+            </article>
+
+            <article class="news-card news-item" data-category="health">
+                <img src="https://images.unsplash.com/photo-1660795468878-d9d8d75967b9?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8c2Nob29sJTIwd2VsbG5lc3MlMjB3b3Jrc2hvcCUyMHN0dWRlbnRzfGVufDB8fDB8fHww" alt="Students in a school wellness activity">
+                <div class="news-card-body">
+                    <span class="news-tag">Health</span>
+                    <h4>New Wellness Workshops Expand to 12 Schools This Month</h4>
+                    <div class="news-meta">February 6, 2026</div>
+                    <p>Counselors and youth leaders introduced short stress-management sessions that now serve over 1,900 students county-wide.</p>
+                    <p class="news-credit">Photo: <a href="https://unsplash.com/s/photos/school-wellness-students" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
+                </div>
+            </article>
+
+            <article class="news-card news-item" data-category="environment">
+                <img src="https://images.unsplash.com/photo-1758599668234-68f52db62425?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dHJlZSUyMHBsYW50aW5nJTIwY29tbXVuaXR5JTIwdm9sdW50ZWVyc3xlbnwwfHwwfHx8MA%3D%3D" alt="People planting trees together">
+                <div class="news-card-body">
+                    <span class="news-tag">Environment</span>
+                    <h4>Tree-Planting Day Adds 600 Native Trees in Local Parks</h4>
+                    <div class="news-meta">February 4, 2026</div>
+                    <p>Families, students, and civic groups completed the winter planting goal ahead of schedule and launched a spring care team.</p>
+                    <p class="news-credit">Photo: <a href="https://unsplash.com/s/photos/tree-planting-volunteers" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
+                </div>
+            </article>
+
+            <article class="news-card news-item" data-category="students">
+                <img src="https://images.unsplash.com/photo-1753613648137-602c669cbe07?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZGVudHMlMjBjb2RpbmclMjBsYXB0b3B8ZW58MHx8MHx8fDA%3D" alt="Students coding on laptops">
+                <div class="news-card-body">
+                    <span class="news-tag">Students</span>
+                    <h4>Teen Innovation Team Wins Regional Award for Transit App</h4>
+                    <div class="news-meta">February 2, 2026</div>
+                    <p>A student-built app that helps riders plan safer evening routes earned top honors at the Metro Youth Innovation Showcase.</p>
+                    <p class="news-credit">Photo: <a href="https://unsplash.com/s/photos/students-coding-laptop" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
+                </div>
+            </article>
+
+            <article class="news-card news-item" data-category="community">
+                <img src="https://images.unsplash.com/photo-1607823477653-e2c3980acb86?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8bGlicmFyeSUyMHJlYWRpbmclMjBjaGlsZHJlbnxlbnwwfHwwfHx8MA%3D%3D" alt="Children and families in a library reading space">
+                <div class="news-card-body">
+                    <span class="news-tag">Community</span>
+                    <h4>Library Pop-Up Events Draw Record Family Attendance</h4>
+                    <div class="news-meta">January 31, 2026</div>
+                    <p>Mobile reading stations and evening storytelling programs reached every district, with attendance up 42% from last year.</p>
+                    <p class="news-credit">Photo: <a href="https://unsplash.com/s/photos/library-reading-children" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
+                </div>
+            </article>
+
+            <article class="news-card news-item" data-category="health">
+                <img src="https://images.unsplash.com/photo-1685022036567-0b91b29276e1?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZGVudCUyMGRlbnRhbCUyMGNsaW5pY3xlbnwwfHwwfHx8MA%3D%3D" alt="Health clinic checkup with students">
+                <div class="news-card-body">
+                    <span class="news-tag">Health</span>
+                    <h4>Free Vision and Dental Clinics Serve 700 Students in January</h4>
+                    <div class="news-meta">January 28, 2026</div>
+                    <p>Partner clinics provided no-cost screenings and referrals, helping families connect quickly with follow-up care resources.</p>
+                    <p class="news-credit">Photo: <a href="https://unsplash.com/s/photos/student-dental-clinic" target="_blank" rel="noopener noreferrer">Unsplash</a></p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <script>
+        const filterButtons = document.querySelectorAll(".news-filter");
+        const newsItems = document.querySelectorAll(".news-item");
+
+        filterButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+                filterButtons.forEach((b) => b.classList.remove("active"));
+                button.classList.add("active");
+
+                const selected = button.dataset.filter;
+                newsItems.forEach((item) => {
+                    const category = item.dataset.category;
+                    const shouldShow = selected === "all" || category === selected;
+                    item.classList.toggle("news-hidden", !shouldShow);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

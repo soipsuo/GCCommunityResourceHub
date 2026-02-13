@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Feedback | Gwinnett County Resource Hub</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <header class="topbar">
+        <div></div>
+        <h1 class="site-title">Gwinnett County Resource Hub</h1>
+        <a class="menu-btn" href="index.html" aria-label="Back to home" style="text-decoration:none;">
+            <span class="home-icon" aria-hidden="true">HOME</span>
+        </a>
+    </header>
+
+    <main class="feedback-wrap">
+        <section class="feedback-hero">
+            <p class="feedback-kicker">Feedback</p>
+            <h2 class="feedback-title">Help us improve this resource hub</h2>
+            <p class="feedback-subtitle">
+                Share ideas, report issues, or tell us what is working well. We review all submissions carefully,
+                though we may not be able to respond to each one.
+            </p>
+        </section>
+
+        <section class="feedback-card" aria-labelledby="feedbackFormTitle">
+            <h3 id="feedbackFormTitle">Send Feedback</h3>
+            <p class="feedback-required-note"><span>*</span> Indicates required field.</p>
+
+            <form id="feedbackForm" class="feedback-form" novalidate>
+                <div class="feedback-grid">
+                    <label class="field">
+                        <span>Name <b>*</b></span>
+                        <input class="input" type="text" name="name" required maxlength="60" placeholder="Your name">
+                    </label>
+
+                    <label class="field">
+                        <span>Email <b>*</b></span>
+                        <input class="input" type="email" name="email" required maxlength="90" placeholder="name@email.com">
+                    </label>
+                </div>
+
+                <div class="feedback-grid">
+                    <label class="field">
+                        <span>Category <b>*</b></span>
+                        <select class="select" name="category" required>
+                            <option value="">Select a category</option>
+                            <option value="General">General</option>
+                            <option value="Tutoring">Tutoring</option>
+                            <option value="Forum">Forum</option>
+                            <option value="Scholarships">Scholarships</option>
+                            <option value="Activities">Activities</option>
+                            <option value="Mental Health">Mental Health</option>
+                        </select>
+                    </label>
+
+                    <label class="field">
+                        <span>Feedback Type <b>*</b></span>
+                        <select class="select" name="type" required>
+                            <option value="">Select feedback type</option>
+                            <option value="Suggestion">Suggestion</option>
+                            <option value="Bug Report">Bug Report</option>
+                            <option value="Design / UX">Design / UX</option>
+                            <option value="Content Update">Content Update</option>
+                        </select>
+                    </label>
+                </div>
+
+                <label class="field">
+                    <span>Subject <b>*</b></span>
+                    <input class="input" type="text" name="subject" required maxlength="100" placeholder="Short summary of your feedback">
+                </label>
+
+                <label class="field">
+                    <span>Page URL (optional)</span>
+                    <input class="input" type="url" name="page" maxlength="200" placeholder="https://... or page name">
+                </label>
+
+                <label class="field">
+                    <span>Comments <b>*</b></span>
+                    <textarea class="textarea feedback-comments" name="comments" id="comments" required maxlength="1000" placeholder="Tell us what happened, what you expected, or what would help most."></textarea>
+                </label>
+
+                <p class="feedback-counter"><span id="charCount">0</span>/1000 characters</p>
+
+                <label class="feedback-policy">
+                    <input type="checkbox" name="policy" required>
+                    <span>I understand this form is for feedback and not urgent support requests.</span>
+                </label>
+
+                <div class="feedback-actions">
+                    <button class="btn primary" type="submit">Submit Feedback</button>
+                    <button class="btn" type="reset">Reset</button>
+                </div>
+
+                <p class="feedback-status" id="feedbackStatus" role="status" aria-live="polite"></p>
+            </form>
+        </section>
+
+        <section class="feedback-help">
+            <h3>Need immediate help?</h3>
+            <p>For urgent support, visit one of these pages:</p>
+            <div class="feedback-links">
+                <a href="mentalhealth.html">Emotional / Mental Programs</a>
+                <a href="Connecting/forum.html">Community Forum</a>
+                <a href="index.html">Back to Home</a>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        const form = document.getElementById("feedbackForm");
+        const comments = document.getElementById("comments");
+        const charCount = document.getElementById("charCount");
+        const statusEl = document.getElementById("feedbackStatus");
+
+        comments.addEventListener("input", () => {
+            charCount.textContent = comments.value.length;
+        });
+
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+
+            if (!form.checkValidity()) {
+                statusEl.textContent = "Please complete all required fields before submitting.";
+                statusEl.classList.add("is-error");
+                return;
+            }
+
+            statusEl.textContent = "Thanks for the feedback. Your response has been recorded on this device.";
+            statusEl.classList.remove("is-error");
+            form.reset();
+            charCount.textContent = "0";
+        });
+
+        form.addEventListener("reset", () => {
+            statusEl.textContent = "";
+            statusEl.classList.remove("is-error");
+            charCount.textContent = "0";
+        });
+    </script>
+</body>
+
+</html>
