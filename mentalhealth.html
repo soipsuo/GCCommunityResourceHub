@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Emotional & Mental Programs | Gwinnett County Resource Hub</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .mh-wrap {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 18px 14px 42px;
+        }
+        
+        .mh-urgent {
+            border: 1px solid rgba(255, 187, 162, .35);
+            background: linear-gradient(160deg, rgba(176, 109, 76, .28), rgba(58, 43, 32, .95));
+            border-radius: 16px;
+            padding: 12px 14px;
+            margin-bottom: 12px;
+            font-size: .96rem;
+            line-height: 1.4;
+        }
+        
+        .mh-urgent a {
+            color: #ffe2d4;
+            font-weight: 700;
+        }
+        
+        .mh-hero {
+            border: 1px solid var(--border);
+            border-radius: 22px;
+            overflow: hidden;
+            background: var(--soil);
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            margin-bottom: 14px;
+        }
+        
+        .mh-hero img {
+            width: 100%;
+            height: 360px;
+            min-height: 0;
+            object-fit: cover;
+        }
+        
+        .mh-hero-copy {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 9px;
+        }
+        
+        .mh-kicker {
+            margin: 0;
+            letter-spacing: .12em;
+            font-size: .78rem;
+            text-transform: uppercase;
+            color: rgba(233, 225, 214, .74);
+        }
+        
+        .mh-hero-copy h2 {
+            margin: 0;
+            font-size: clamp(1.35rem, 2.7vw, 2rem);
+            line-height: 1.2;
+        }
+        
+        .mh-hero-copy p {
+            margin: 0;
+            color: var(--mutedText);
+            line-height: 1.44;
+            max-width: 62ch;
+        }
+        
+        .mh-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 12px;
+        }
+        
+        .mh-card {
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            background: var(--soil);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mh-card img {
+            width: 100%;
+            height: 160px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .mh-body {
+            padding: 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        
+        .mh-tag {
+            width: fit-content;
+            font-size: .76rem;
+            font-weight: 700;
+            border: 1px solid rgba(233, 225, 214, .2);
+            background: rgba(36, 64, 46, .52);
+            border-radius: 999px;
+            padding: 5px 10px;
+        }
+        
+        .mh-body h3 {
+            margin: 0;
+            font-size: 1.02rem;
+            line-height: 1.25;
+        }
+        
+        .mh-body p {
+            margin: 0;
+            color: rgba(255, 255, 255, .87);
+            line-height: 1.38;
+            font-size: .93rem;
+        }
+        
+        .mh-actions {
+            margin-top: 2px;
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+        
+        .mh-btn {
+            text-decoration: none;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 8px 10px;
+            color: var(--sandText);
+            background: rgba(255, 255, 255, .05);
+            font-size: .88rem;
+            font-weight: 700;
+        }
+        
+        .mh-btn:hover {
+            border-color: rgba(176, 109, 76, .65);
+            background: rgba(255, 255, 255, .1);
+        }
+        
+        .mh-btn.primary {
+            background: rgba(176, 109, 76, .94);
+            border-color: rgba(255, 255, 255, .15);
+            color: #fff;
+        }
+        
+        .mh-btn.primary:hover {
+            background: rgba(47, 91, 59, .95);
+        }
+        
+        .mh-section-title {
+            margin: 18px 0 0;
+            font-size: 1.2rem;
+        }
+        
+        .mh-section-sub {
+            margin: 7px 0 0;
+            color: var(--mutedText);
+            font-size: .92rem;
+        }
+        
+        .mh-note {
+            margin-top: 8px;
+            color: rgba(233, 225, 214, .73);
+            font-size: .84rem;
+        }
+        
+        @media (max-width: 980px) {
+            .mh-hero {
+                grid-template-columns: 1fr;
+            }
+            .mh-hero img {
+                height: 240px;
+                max-height: 240px;
+            }
+            .mh-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 640px) {
+            .mh-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header class="topbar">
+        <div></div>
+        <h1 class="site-title">Gwinnett County Resource Hub</h1>
+        <a class="menu-btn" href="index.html" aria-label="Back to home" style="text-decoration:none;">
+            <span style="font-weight:800;color:var(--sandText);">HOME</span>
+        </a>
+    </header>
+
+    <main class="mh-wrap">
+        <section class="mh-urgent">
+            If someone is in immediate danger, call <b>911</b>. If you or someone may be experiencing suicidal thoughts, call or text <b><a href="https://988lifeline.org/" target="_blank" rel="noopener noreferrer">988 Suicide &amp; Crisis Lifeline</a></b>.
+        </section>
+
+        <section class="mh-hero">
+            <img src="https://images.unsplash.com/photo-1592947945242-69312358628b?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dGhlcmFweSUyMGNvdW5zZWxpbmd8ZW58MHx8MHx8fDA%3D" alt="Person receiving mental health support">
+            <div class="mh-hero-copy">
+                <p class="mh-kicker">Emotional & Mental Support</p>
+                <h2>Local resources for counseling, crisis help, and wellness support</h2>
+                <p>
+                    This page combines real programs serving Gwinnett County and community spotlight programs to help students and families quickly find emotional and mental wellness support.
+                </p>
+            </div>
+        </section>
+
+        <h3 class="mh-section-title">Real Gwinnett-Area Resources</h3>
+        <p class="mh-section-sub">Verified organizations and services with direct links.</p>
+
+        <section class="mh-grid">
+            <article class="mh-card">
+                <img src="https://images.unsplash.com/photo-1600096040587-f609e25ad970?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c3R1ZGVudCUyMHdlbGxuZXNzfGVufDB8fDB8fHww" alt="Students in a wellness conversation">
+                <div class="mh-body">
+                    <span class="mh-tag">Local Provider</span>
+                    <h3>View Point Health</h3>
+                    <p>Community behavioral health organization serving Gwinnett, Newton, and Rockdale with mental health and recovery support.</p>
+                    <div class="mh-actions">
+                        <a class="mh-btn primary" href="https://www.myviewpointhealth.org/" target="_blank" rel="noopener noreferrer">Visit Resource</a>
+                        <a class="mh-btn" href="https://www.myviewpointhealth.org/locations/" target="_blank" rel="noopener noreferrer">Locations</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="mh-card">
+                <img src="https://images.unsplash.com/photo-1620147512372-9e00421556bb?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bWVudGFsJTIwaGVhbHRoJTIwc3VwcG9ydCUyMGdyb3VwfGVufDB8fDB8fHww" alt="Support group circle">
+                <div class="mh-body">
+                    <span class="mh-tag">Youth & Family</span>
+                    <h3>GUIDE Inc. - Gwinnett County</h3>
+                    <p>Gwinnett-focused prevention and youth support services, including behavioral health and community-based programs.</p>
+                    <div class="mh-actions">
+                        <a class="mh-btn primary" href="https://guideinc.org/gwinnett-county/" target="_blank" rel="noopener noreferrer">Visit Resource</a>
+                        <a class="mh-btn" href="https://guideinc.org/" target="_blank" rel="noopener noreferrer">Main Site</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="mh-card">
+                <img src="https://images.unsplash.com/photo-1528129550655-5123a0cd0c4e?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8dGhlcmFweSUyMGNvdW5zZWxpbmd8ZW58MHx8MHx8fDA%3D" alt="Person receiving counseling support">
+                <div class="mh-body">
+                    <span class="mh-tag">Program Directory</span>
+                    <h3>View Point Health Programs A to Z</h3>
+                    <p>Browse service types and programs to find options that match specific mental health, counseling, or developmental support needs.</p>
+                    <div class="mh-actions">
+                        <a class="mh-btn primary" href="https://www.myviewpointhealth.org/about/programs-a-to-z/" target="_blank" rel="noopener noreferrer">Visit Resource</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="mh-card">
+                <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?fm=jpg&q=60&w=2200&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Community wellness activity">
+                <div class="mh-body">
+                    <span class="mh-tag">County Wellness</span>
+                    <h3>Live Healthy Gwinnett - Programs</h3>
+                    <p>County wellness initiatives and classes that can support stress management, healthier routines, and overall wellbeing.</p>
+                    <div class="mh-actions">
+                        <a class="mh-btn primary" href="https://www.livehealthygwinnett.com/programs/" target="_blank" rel="noopener noreferrer">Visit Resource</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="mh-card">
+                <img src="https://images.unsplash.com/photo-1589190959334-1e0d241dea82?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8dGhlcmFweSUyMGNvdW5zZWxpbmd8ZW58MHx8MHx8fDA%3D" alt="Person on support call">
+                <div class="mh-body">
+                    <span class="mh-tag">Crisis Support</span>
+                    <h3>988 Suicide & Crisis Lifeline</h3>
+                    <p>24/7 phone, text, and chat support for anyone experiencing emotional distress or mental health crisis.</p>
+                    <div class="mh-actions">
+                        <a class="mh-btn primary" href="https://988lifeline.org/" target="_blank" rel="noopener noreferrer">Visit Resource</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="mh-card">
+                <img src="https://images.unsplash.com/photo-1516307365426-bea591f05011?fm=jpg&q=60&w=2200&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Support resources and community tools">
+                <div class="mh-body">
+                    <span class="mh-tag">Support Groups</span>
+                    <h3>NAMI Georgia Support Groups</h3>
+                    <p>Family and peer-led support group listings across Georgia, including options relevant for Gwinnett residents.</p>
+                    <div class="mh-actions">
+                        <a class="mh-btn primary" href="https://namiga.org/support-and-education/support-groups/" target="_blank" rel="noopener noreferrer">Visit Resource</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <h3 class="mh-section-title">Community Spotlight Programs</h3>
+        <p class="mh-section-sub">Local-style hub programs you can customize or expand for your site.</p>
+
+        <section class="mh-grid">
+            <article class="mh-card">
+                <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?fm=jpg&q=60&w=2200&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Students in peer support session">
+                <div class="mh-body">
+                    <span class="mh-tag">Spotlight</span>
+                    <h3>Student Calm Circles (Hub Program)</h3>
+                    <p>Weekly peer-led check-in circles focused on stress, school pressure, and healthy coping routines.</p>
+                    <div class="mh-actions">
+                        <a class="mh-btn" href="feedback.html">Request Program Info</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="mh-card">
+                <img src="https://images.unsplash.com/photo-1544717297-fa95b6ee9643?fm=jpg&q=60&w=2200&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Family workshop session">
+                <div class="mh-body">
+                    <span class="mh-tag">Spotlight</span>
+                    <h3>Family Wellness Workshops (Hub Program)</h3>
+                    <p>Monthly workshops on communication, emotional support at home, and building healthier family routines.</p>
+                    <div class="mh-actions">
+                        <a class="mh-btn" href="feedback.html">Request Program Info</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="mh-card">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?fm=jpg&q=60&w=2200&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Students meeting with mentor">
+                <div class="mh-body">
+                    <span class="mh-tag">Spotlight</span>
+                    <h3>Mindset Mentors (Hub Program)</h3>
+                    <p>A mentor check-in model that pairs students with trained volunteers for regular goal and wellbeing check-ins.</p>
+                    <div class="mh-actions">
+                        <a class="mh-btn" href="feedback.html">Request Program Info</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+
+        <p class="mh-note">Note: Always verify eligibility, insurance, and appointment availability directly with each organization.</p>
+    </main>
+</body>
+
+</html>
